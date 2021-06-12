@@ -31,6 +31,10 @@ import { useGlobals } from '../contexts/Global';
 import styles from './MainStyle';
 import HomePage from './Home';
 import MusicPage from './Music';
+import CustomerPage from './Customers';
+import GamePage from './Game';
+import RankingPage from './Ranking';
+import WalletPage from './Wallet';
 
 const Drawer = createDrawerNavigator();
 
@@ -47,13 +51,13 @@ function CustomDrawerContent(props) {
     {
       drawerLabel: 'Ranking',
       drawerIcon: 'assessment',
-      routeName: 'Main',
+      routeName: 'RankingPage',
       group: '',
     },
     {
       drawerLabel: 'Customers',
       drawerIcon: 'account-box',
-      routeName: 'Main',
+      routeName: 'CustomerPage',
       group: '',
     },
     {
@@ -65,13 +69,13 @@ function CustomDrawerContent(props) {
     {
       drawerLabel: 'Wallet',
       drawerIcon: 'shopping-basket',
-      routeName: 'Main',
+      routeName: 'WalletPage',
       group: '',
     },
     {
       drawerLabel: 'Game',
       drawerIcon: 'videogame-asset',
-      routeName: 'Main',
+      routeName: 'GamePage',
       group: '',
     },
     {
@@ -88,8 +92,8 @@ function CustomDrawerContent(props) {
     },
   ]);
   const [drawerSelected, setDrawerSelected] = React.useState(0);
-  
-  const ItemHeader = ({item, index}) => {
+
+  const ItemHeader = ({ item, index }) => {
     const indexPosition = drawerItems.findIndex(
       (obj) => obj.group === item.group,
     );
@@ -107,48 +111,48 @@ function CustomDrawerContent(props) {
           name={'close'}
           type='MaterialIcons'
           style={styles.drawerCloseIcon}
-          onPress={()=>props.hideDrawer()}
+          onPress={() => props.hideDrawer()}
         />
         <Image
-          source={{uri: 'https://picsum.photos/200/200'}}
+          source={{ uri: 'https://picsum.photos/200/200' }}
           style={styles.imageProfile}
         />
-        <Text style={styles.textName}>{userInfo.firstName+' '+userInfo.lastName}</Text>
+        <Text style={styles.textName}>{userInfo.firstName + ' ' + userInfo.lastName}</Text>
         <Text numberOfLines={1} style={styles.textEmail}>
           {userInfo.email}
         </Text>
       </View>
       <View style={styles.containerContent}>
-        <FlatList 
+        <FlatList
           data={drawerItems}
           keyExtractor={(item, index) => String(index + JSON.stringify(item))}
-          renderItem={({item, index}) => (
+          renderItem={({ item, index }) => (
             <View>
               <ItemHeader item={item} index={index} />
               <View
                 style={styles.itemContainer}
               >
-              <DrawerItem
-                label={item.drawerLabel}
-                icon={({color, size}) => (
-                  <Icon
-                    name={item.drawerIcon}
-                    type='MaterialIcons'
-                    style={styles.drawerIcon}
-                  />
-                )}
-                style={styles.textDrawer}
-                labelStyle={styles.textDrawerItem}
-                onPress={() => {
-                  setDrawerSelected(index);
-                  props.navigation.navigate(item.routeName);
-                }}
-              />
-              <Icon
-                name={'navigate-next'}
-                type='MaterialIcons'
-                style={styles.drawerSuffixIcon}
-              />
+                <DrawerItem
+                  label={item.drawerLabel}
+                  icon={({ color, size }) => (
+                    <Icon
+                      name={item.drawerIcon}
+                      type='MaterialIcons'
+                      style={styles.drawerIcon}
+                    />
+                  )}
+                  style={styles.textDrawer}
+                  labelStyle={styles.textDrawerItem}
+                  onPress={() => {
+                    setDrawerSelected(index);
+                    props.navigation.navigate(item.routeName);
+                  }}
+                />
+                <Icon
+                  name={'navigate-next'}
+                  type='MaterialIcons'
+                  style={styles.drawerSuffixIcon}
+                />
               </View>
             </View>
           )}
@@ -158,8 +162,8 @@ function CustomDrawerContent(props) {
   );
 }
 
-const Main = ({navigation}) => {
-  return(
+const Main = ({ navigation }) => {
+  return (
     <SafeAreaProvider>
       <Drawer.Navigator
         initialRouteName="HomePage"
@@ -172,6 +176,10 @@ const Main = ({navigation}) => {
       >
         <Drawer.Screen name="HomePage" component={HomePage} />
         <Drawer.Screen name="MusicPage" component={MusicPage} />
+        <Drawer.Screen name="CustomerPage" component={CustomerPage} />
+        <Drawer.Screen name="GamePage" component={GamePage} />
+        <Drawer.Screen name="RankingPage" component={RankingPage} />
+        <Drawer.Screen name="WalletPage" component={WalletPage} />
       </Drawer.Navigator>
     </SafeAreaProvider>
   );
