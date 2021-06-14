@@ -164,7 +164,7 @@ function CustomDrawerContent(props) {
 
 const Main = ({ navigation }) => {
   return (
-    <SafeAreaProvider>
+    < SafeAreaProvider >
       <Drawer.Navigator
         initialRouteName="HomePage"
         drawerStyle={styles.drawer}
@@ -181,7 +181,7 @@ const Main = ({ navigation }) => {
         <Drawer.Screen name="RankingPage" component={RankingPage} />
         <Drawer.Screen name="WalletPage" component={WalletPage} />
       </Drawer.Navigator>
-    </SafeAreaProvider>
+    </SafeAreaProvider >
   );
 }
 
