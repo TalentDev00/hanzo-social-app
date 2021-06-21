@@ -172,11 +172,16 @@ const SignIn = ({ navigation }) => {
         <Text style={{ margin: 15 }}>{errorMsg}</Text>
         <Button title='Close' onPress={() => closeAlert()} />
       </Overlay>
+<<<<<<< HEAD
       <Overlay isVisible={showProgress}
         overlayBackgroundColor= 'rgb(234,164,67)'
         onBackdropPress={() => setShowProgress(false)}
         >
         <Spinner style={{ margin: 15}} />
+=======
+      <Overlay isVisible={showProgress} onBackdropPress={() => setShowProgress(false)}>
+        <Spinner style={{ margin: 15 }} />
+>>>>>>> 711690b9b7b54acc2337f71e0275576e919a60e0
       </Overlay>
     </SafeAreaView>
     </ImageBackground>
