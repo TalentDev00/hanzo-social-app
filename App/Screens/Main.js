@@ -36,6 +36,7 @@ import CustomerPage from './Customers';
 import GamePage from './Game';
 import RankingPage from './Ranking';
 import WalletPage from './Wallet';
+import SettingsPage from './Settings';
 
 const Drawer = createDrawerNavigator();
 
@@ -82,7 +83,7 @@ function CustomDrawerContent(props) {
     {
       drawerLabel: 'Settings',
       drawerIcon: 'settings',
-      routeName: 'Main',
+      routeName: 'SettingsPage',
       group: '1',
     },
     {
@@ -119,12 +120,7 @@ function CustomDrawerContent(props) {
             source={require('../Assets/Images/hanzo-logo.gif')}
             style={styles.imageProfile}
           />
-          <Text style={[styles.textName, {
-            textAlign: 'center',
-            fontSize: 18,
-            fontFamily: 'Moyko',
-            color: '#FFF',
-          }]}>{/*userInfo.first_name + ' ' + userInfo.last_name*/'Sensei Hanzo'}</Text>
+          <Text style={[styles.textName]}>{/*userInfo.first_name + ' ' + userInfo.last_name*/'Sensei Hanzo'}</Text>
           {/* <Text numberOfLines={1} style={styles.textEmail}>
             {userInfo.email}
           </Text> */}
@@ -145,11 +141,11 @@ function CustomDrawerContent(props) {
                       <Icon
                         name={item.drawerIcon}
                         type='MaterialIcons'
-                        style={[styles.drawerIcon, { color: '#FFF' }]}
+                        style={[styles.drawerIcon]}
                       />
                     )}
                     style={[styles.textDrawer]}
-                    labelStyle={[styles.textDrawerItem, { color: '#FFF' }]}
+                    labelStyle={[styles.textDrawerItem]}
                     onPress={() => {
                       setDrawerSelected(index);
                       props.navigation.navigate(item.routeName);
@@ -158,7 +154,7 @@ function CustomDrawerContent(props) {
                   <Icon
                     name={'navigate-next'}
                     type='MaterialIcons'
-                    style={[styles.drawerSuffixIcon, { color: '#FFF' }]}
+                    style={[styles.drawerSuffixIcon]}
                   />
                 </View>
               </View>
@@ -188,6 +184,7 @@ const Main = ({ navigation }) => {
         <Drawer.Screen name="GamePage" component={GamePage} />
         <Drawer.Screen name="RankingPage" component={RankingPage} />
         <Drawer.Screen name="WalletPage" component={WalletPage} />
+        <Drawer.Screen name="SettingsPage" component={SettingsPage} />
       </Drawer.Navigator>
     </SafeAreaProvider >
   );
